@@ -1,0 +1,16 @@
+.button {
+  padding: 3px 15px;
+  border-radius: 5px;
+  border: 1px solid black;
+  color: darkgreen;
+  font-weight: 700;
+}
+
+.input {
+  display: block;
+  padding: 5px 10px;
+
+  &__title {
+    font-weight: 700;
+  }
+}

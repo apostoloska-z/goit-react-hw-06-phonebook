@@ -1,0 +1,10 @@
+.contact-list {
+  padding: 15px 35px;
+  width: 300px;
+  background-color: olivedrab;
+  border: 1px solid black;
+
+  &__item {
+    margin-bottom: 10px;
+  }
+}
