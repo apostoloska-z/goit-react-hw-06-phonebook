@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { updateFilter } from '../../redux/actions';
+import { changeFilter } from "../../redux/phonebook-actions";
+import { getFilter } from "../../redux/phonebook-selectors";
 import "./Filter.scss"
 
 const Filter = ({ value, onChange }) => (
@@ -25,12 +26,12 @@ Filter.propTypes = {
     onChange: PropTypes.func.isRequired,
 }
 
-const mapStateToProps = (state) => ({
-    value: state.contacts.filter,
+const mapStateToProps = state => ({
+    value: getFilter(state),
 })
 
 const mapDispatchToProps = dispatch => ({
-    onChange: (event) => dispatch(updateFilter(event.target.value)),
+    onChange: (event) => dispatch(changeFilter(event.target.value)),
 })
 
 

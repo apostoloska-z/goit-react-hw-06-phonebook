@@ -1,7 +1,7 @@
 import { Component } from "react";
 import { v4 as uuidv4 } from 'uuid';
 import { connect } from 'react-redux';
-import {addContact} from '../../redux/actions'
+import { addContact } from '../../redux/phonebook-operations';
 import "./ContactForm.scss"
 
 class ContactForm extends Component  {
@@ -65,8 +65,10 @@ class ContactForm extends Component  {
     }    
 }
 
-const mapDispatchToProps = dispatch => ({
-    onSubmit: ({name, number}) => dispatch(addContact({name, number}))
-})
+const mapDispatchToProps = (dispatch) => ({
+  onSubmit: ({ name, number }) =>
+    dispatch(addContact(name, number)),
+});
+
 
 export default connect(null, mapDispatchToProps)(ContactForm);
