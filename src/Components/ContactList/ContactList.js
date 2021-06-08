@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
 import ContactItem from "../ContactItem";
 import { connect } from 'react-redux';
-import { deleteContact } from '../../redux/phonebook-operations';
-import { getVisibleContacts } from '../../redux/phonebook-selectors';
+import { deleteContact } from '../../redux/actions';
 import "./ContactList.scss"
 
 const ContactList = ({ contacts, deleteHandler }) => (
@@ -27,8 +26,15 @@ ContactList.propTypes = {
     deleteHandler: PropTypes.func.isRequired,
 }
 
-const mapStateToProps = state => ({
-  contacts: getVisibleContacts(state),
+const getVisibleContacts = (allContacts, filter) => {
+  const normalizedFilter = filter.toLowerCase();
+  return allContacts.filter((contact) =>
+    contact.name.toLowerCase().includes(normalizedFilter)
+  );
+};
+
+const mapStateToProps = ({ contacts: { items, filter } }) => ({
+  contacts: getVisibleContacts(items, filter),
 });
 
 const mapDispatchToProps = dispatch => ({
